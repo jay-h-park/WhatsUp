@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ../db/conf.d:/etc/mysql/conf.d
+#      - ../db/data:/var/lib/mysql
+      - ../db/initdb.d:/docker-entrypoint-initdb.d
+    env_file: ../db/.env
+    environment:
+      TZ: Asia/Seoul
+    restart: always
+    networks:
+      - backend-network
+  backend:
+    build:
+      context: ../../backend/
+      dockerfile: Dockerfile
+    container_name: whatsup_backend
+#    environment:
+    ports:
+      - "8000:8000"
+    command: ['java', '-jar', 'app.jar']
+#    volumes:
+#      - ../../backend/:/backend
+#    restart: unless-stopped
+    networks:
+      - backend-network
+networks:
+  backend-network:
