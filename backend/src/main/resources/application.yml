@@ -1,0 +1,25 @@
+spring:
+#  datasource:
+#    url: 
+#    username: 
+#    password:
+#    driver-class-name: 
+  mvc:
+    view:
+      suffix: .html
+    hiddenmethod:
+      filter:
+        enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #        show_sql: true
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
