@@ -1,9 +1,9 @@
 spring:
-#  datasource:
-#    url: 
-#    username: 
-#    password:
-#    driver-class-name: 
+  datasource:
+    url: jdbc:mysql://whatsup_db:3306/whatsup
+    username: whatsup_admin
+    password: dlagkrtnqkrwoghd!
+    driver-class-name: com.mysql.jdbc.Driver
   mvc:
     view:
       suffix: .html
@@ -23,3 +23,10 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
+
+graphql:
+  tools:
+    # resource 디렉토리 내의 스키마 파일의 위치 설정
+    schema-location-pattern: "**/*.graphqls"
+    # 스키마 확인 기능을 사용하여 타입 시스템
+    introspection-enabled: true
